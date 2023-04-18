@@ -6,6 +6,7 @@ public class BankingApplication {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		BankAccount ba = registerNewUserWithPrompts(sc);
+		printSpace();
 		String returnedOption = "1";
 		while(!returnedOption.equals("4")) {
 			showMenu();
@@ -13,17 +14,22 @@ public class BankingApplication {
 			switch (returnedOption) {
 			case "1":
 				System.out.println("Account Balance: " + ba.getAccountBalance());
+				printSpace();
 				break;
 			case "2":
 				performDepositWithPrompts(sc, ba);
+				printSpace();
 				break;
 			case "3":
 				performWithdrawlWithPrompts(sc, ba);
+				printSpace();
+				break;
 			case "4":
 				System.out.println("Thank you for banking with us!\n");
 				break;
 			default:
 				System.out.println("'" + returnedOption + "' is not a valid input.  Try again\n");
+				printSpace();
 				break;
 			}
 		}
@@ -36,7 +42,7 @@ public class BankingApplication {
 				"Please input the account holders name: ");
 		String response = sc.next();
 		while(response.contentEquals("") || response == null) {
-			System.out.print("Whoops! " + response + " is not a valid name.\n" + 
+			System.out.print("\nWhoops! " + response + " is not a valid name.\n" + 
 				       "Please input the account holders name: ");
 			response = sc.next();
 		}
@@ -85,8 +91,12 @@ public class BankingApplication {
 				"1. View Account Balance\n" + 
 			    "2. Deposit\n" + 
 			    "3. Withdrawl\n" + 
-			    "4. Exit\n";
+			    "4. Exit\n\n";
 		System.out.println(displayString);
+	}
+	
+	static void printSpace() {
+		System.out.println("\n\n");
 	}
 	
 }
